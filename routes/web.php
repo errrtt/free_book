@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,9 +15,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [UserController::class, 'index']);
+Route::get('/index', [UserController::class, 'index']);
+
+Route::get('/categories/add', [CategoryController::class, 'add']);
+Route::post('/categories/add', [CategoryController::class, 'create']);
+
+Route::get('/categories/show', [CategoryController::class, 'show']);
+Route::get('/categories/delete/{id}', [CategoryController::class, 'delete']);
+
+Route::get('/categories/edit/{id}', [CategoryController::class, 'edit']);
+Route::post('/categories/edit/{id}', [CategoryController::class, 'update']);
 
 Auth::routes();
 
