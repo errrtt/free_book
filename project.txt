@@ -1,0 +1,10 @@
+
+book table
+    title image book_file author_name category_id
+
+
+category table
+    name
+
+
+user table
