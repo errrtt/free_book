@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BookController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -27,6 +28,14 @@ Route::get('/categories/delete/{id}', [CategoryController::class, 'delete']);
 Route::get('/categories/edit/{id}', [CategoryController::class, 'edit']);
 Route::post('/categories/edit/{id}', [CategoryController::class, 'update']);
 
+Route::get('/books/add', [BookController::class, 'add']);
+Route::post('/books/add', [BookController::class, 'create']);
+Route::get('/books', [BookController::class, 'show_books']);
+
+Route::get('/books/delete/{id}', [BookController::class, 'delete']);
+Route::get('/books/edit/{id}', [BookController::class, 'edit']);
+Route::post('/books/edit/{id}', [BookController::class, 'update']);
+
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [UserController::class, 'index']);

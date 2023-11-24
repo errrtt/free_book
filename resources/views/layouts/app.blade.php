@@ -33,8 +33,9 @@
                         @auth
                             @can('admin-authorized')
                                 <a href="{{ url('/categories/add') }}" class="nav-link text-success">+ Add Category</a>
-                            @endcan
 
+                                <a href="{{ url('/books/add') }}" class="text-secondary nav-link">+ Add Books</a>
+                            @endcan
                         @endauth
                     </ul>
 

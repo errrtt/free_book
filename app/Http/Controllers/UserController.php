@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use \App\Models\Book;
 
 class UserController extends Controller
 {
@@ -13,6 +14,7 @@ class UserController extends Controller
 
     public function index()
     {
-        return view('users.index');
+        $books = Book::all();
+        return view('users.index', ['books' => $books]);
     }
 }
