@@ -9,7 +9,7 @@
         <div class="row">
             @foreach ($books as $book)
                 <div class="col-lg-3 col-md-4 col-6">
-                    <div class="card">
+                    <div class="card mb-3">
                         <img src="{{ asset('storage/images/' . $book->image) }}" width="100%" height="200">
                         <div class="card-body">
                             <h5 class="card-title">{{ $book->title }}</h5>
