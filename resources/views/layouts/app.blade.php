@@ -41,6 +41,29 @@
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
+                        @auth
+                            <div class="px-2">
+                             <form action="{{ url("/books/search") }}" method="get">
+                                <div class="btn-group">
+                                    <input type="text" name="search" class="form-control"   placeholder="Search somethig..">
+                                    <button class="btn btn-sm btn-primary">Search</button>
+                                </div>
+                            </form>
+                        </div>
+
+                        <div class="px-2">
+                            <form action="{{ url("/books/category") }}" method="get">
+                                <div class="btn-group">
+                                    <select name="category_id" class="form-select">
+                                        @foreach ($categories as $category)
+                                            <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                        @endforeach
+                                    </select>
+                                    <button class="btn btn-sm btn-secondary">Filter</button>
+                                </div>
+                            </form>
+                        </div>
+                        @endauth
                         <!-- Authentication Links -->
                         @guest
                             @if (Route::has('login'))

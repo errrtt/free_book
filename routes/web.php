@@ -36,6 +36,9 @@ Route::get('/books/delete/{id}', [BookController::class, 'delete']);
 Route::get('/books/edit/{id}', [BookController::class, 'edit']);
 Route::post('/books/edit/{id}', [BookController::class, 'update']);
 
+Route::get('/books/search', [UserController::class, 'search']);
+Route::get('/books/category', [UserController::class, 'search_category']);
+
 Auth::routes();
 
 Route::get('/home', [UserController::class, 'index']);

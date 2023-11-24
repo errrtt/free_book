@@ -22,9 +22,12 @@
                                 </p>
                             </div>
                         </div>
-                        <div class="card-footer">
-                            <a href="{{ asset('storage/files/' . $book->file) }}" class="btn btn-sm btn-outline-success">Go read</a>
-                        </div>
+
+                        @auth
+                            <div class="card-footer">
+                                <a href="{{ asset('storage/files/' . $book->file) }}" class="btn btn-sm btn-outline-success">Go read</a>
+                            </div>
+                        @endauth
                     </div>
                 </div>
             @endforeach
