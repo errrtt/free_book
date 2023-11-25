@@ -25,7 +25,9 @@
 
                         @auth
                             <div class="card-footer">
-                                <a href="{{ asset('storage/files/' . $book->file) }}" class="btn btn-sm btn-outline-success">Go read</a>
+                                <div class="float-end">
+                                     <a href="{{ asset('storage/files/' . $book->file) }}" class="btn btn-sm btn-success">Go read</a>
+                                </div>
                             </div>
                         @endauth
                     </div>
