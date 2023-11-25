@@ -15,7 +15,8 @@ class UserController extends Controller
     public function index()
     {
         $books = Book::all();
-        return view('users.index', ['books' => $books]);
+        $categories = \App\Models\Category::all();
+        return view('users.index', ['books' => $books, 'categories' => $categories]);
     }
 
     public function search(Request $request)
@@ -24,13 +25,16 @@ class UserController extends Controller
         $books = Book::where('author_name', 'LIKE', "%$search%")
                         ->orWhere('title', 'LIKE', "%$search%")
                         ->get();
-        return view('users.index', ['books' => $books, 'search' => $search]);
+
+        $categories = \App\Models\Category::all();
+        return view('users.index', ['books' => $books, 'search' => $search, 'categories' => $categories]);
     }
 
     public function search_category(Request $request)
     {
         $search = $request->category_id;
         $books = Book::where('category_id', 'LIKE', "%$search%")->get();
-        return view('users.index', ['books' => $books, 'search' => $search]);
+        $categories = \App\Models\Category::all();
+        return view('users.index', ['books' => $books, 'search' => $search, 'categories' => $categories]);
     }
 }
