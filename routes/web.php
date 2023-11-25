@@ -41,6 +41,7 @@ Route::get('/books/search', [UserController::class, 'search']);
 Route::get('/books/category', [UserController::class, 'search_category']);
 
 Route::get('/users/show', [AdminController::class, 'show_user']);
+Route::get('/users/delete/{id}', [AdminController::class, 'delete']);
 
 Auth::routes();
 
