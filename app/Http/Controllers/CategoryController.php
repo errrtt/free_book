@@ -12,7 +12,7 @@ class CategoryController extends Controller
     {
         $this->middleware(function($request, $next) {
             $user = auth()->user();
-            if($user && $user->role_id === 1) {
+            if($user && $user->role_id != 2) {
                 return redirect('/index')->with('info', 'Unauthorized');
             }
 

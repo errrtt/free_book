@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\UserController;
@@ -38,6 +39,8 @@ Route::post('/books/edit/{id}', [BookController::class, 'update']);
 
 Route::get('/books/search', [UserController::class, 'search']);
 Route::get('/books/category', [UserController::class, 'search_category']);
+
+Route::get('/users/show', [AdminController::class, 'show_user']);
 
 Auth::routes();
 

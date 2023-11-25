@@ -35,6 +35,8 @@
                                 <a href="{{ url('/categories/add') }}" class="nav-link text-success">+ Add Category</a>
 
                                 <a href="{{ url('/books/add') }}" class="text-secondary nav-link">+ Add Books</a>
+
+                                 <a href="{{ url('/users/show') }}" class="text-warning nav-link">Admin Dashboard</a>
                             @endcan
                         @endauth
                     </ul>
