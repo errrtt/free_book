@@ -27,7 +27,7 @@
                             <td>{{ $category->id }}</td>
                             <td>{{ $category->name }}</td>
                             <td>
-                                <a href="{{ url("/categories/delete/$category->id") }}" class="btn btn-outline-danger btn-sm">Delete</a>
+                                <a href="{{ url("/categories/delete/$category->id") }}" class="btn btn-outline-danger btn-sm" onclick="return confirm('Are you sure?')">Delete</a>
 
                                 <a href="{{ url("/categories/edit/$category->id") }}" class="btn btn-outline-success btn-sm">Edit</a>
                             </td>

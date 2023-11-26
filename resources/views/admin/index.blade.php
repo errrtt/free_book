@@ -23,7 +23,7 @@
                             @auth
 
                                 @can('user-delete', $user)
-                                    <a href="{{ url("/users/delete/$user->id") }}" class="btn btn-outline-danger btn-sm">Delete</a>
+                                    <a href="{{ url("/users/delete/$user->id") }}" class="btn btn-outline-danger btn-sm" onclick="return confirm('Are you sure?')">Delete</a>
                                 @endcan
 
                                 @can('admin-suspend', $user)

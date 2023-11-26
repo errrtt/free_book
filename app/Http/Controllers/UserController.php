@@ -14,7 +14,7 @@ class UserController extends Controller
 
     public function index()
     {
-        $books = Book::all();
+        $books = Book::latest()->get();
         $categories = \App\Models\Category::all();
         return view('users.index', ['books' => $books, 'categories' => $categories]);
     }

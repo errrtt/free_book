@@ -41,7 +41,7 @@
                             <td>{{ $book->created_at->diffForHumans() }}</td>
                             <td>
                                 <div class="text-center btn-group">
-                                    <a href="{{ url("/books/delete/$book->id") }}" class="btn btn-outline-danger btn-sm">Delete</a>
+                                    <a href="{{ url("/books/delete/$book->id") }}" class="btn btn-outline-danger btn-sm" onclick="return confirm('Are you sure?')">Delete</a>
 
                                     <a href="{{ url("/books/edit/$book->id") }}" class="btn btn-outline-warning btn-sm">Edit</a>
                                 </div>
