@@ -10,7 +10,7 @@
             <div class="alert alert-warning">{{ "You can't read the books because you account has been suspended." }}</div>
         @endif
     </div>
-    <div class="container-fluid mt-5 bg-secondary p-5">
+    <div class="container-fluid mt-5 ">
         <div class="row mb-3">
             @auth
                 <div class="mb-5">
@@ -37,7 +37,7 @@
             @endauth
         </div>
 
-        <div class="row">
+        <div class="row bg-secondary p-5">
             @foreach ($books as $book)
                 <div class="col-lg-3 col-md-4 col-6">
                     <div class="card mb-3">
