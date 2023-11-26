@@ -24,5 +24,17 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('admin-authorized', function($user) {
             return $user->role_id === 2;
         });
+
+        Gate::define('user-delete', function($user, $data) {
+            return $user->role_id === 2 && $data->role_id != 2;
+        });
+
+        Gate::define('user-suspended', function($user) {
+            return $user->suspended === 0;
+        });
+
+        Gate::define('admin-suspend', function($admin, $user) {
+            return $admin->role_id === 2 && $user->role_id != 2;
+        });
     }
 }

@@ -1,11 +1,16 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container-fluid mt-5 bg-secondary p-5">
-        @if (session('info'))
+    <div class="container-fluid px-0">
+         @if (session('info'))
             <div class="alert alert-info">{{ session('info') }}</div>
         @endif
 
+        @if (auth()->user() && auth()->user()->suspended === 1)
+            <div class="alert alert-warning">{{ "You can't read the books because you account has been suspended." }}</div>
+        @endif
+    </div>
+    <div class="container-fluid mt-5 bg-secondary p-5">
         <div class="row mb-3">
             @auth
                 <div class="mb-5">
@@ -50,11 +55,13 @@
                         </div>
 
                         @auth
-                            <div class="card-footer">
-                                <div class="float-end">
-                                     <a href="{{ asset('storage/files/' . $book->file) }}" class="btn btn-sm btn-success">Go read</a>
+                            @can('user-suspended')
+                                <div class="card-footer">
+                                    <div class="float-end">
+                                        <a href="{{ asset('storage/files/' . $book->file) }}" class="btn btn-sm btn-success">Go read</a>
+                                    </div>
                                 </div>
-                            </div>
+                            @endcan
                         @endauth
                     </div>
                 </div>

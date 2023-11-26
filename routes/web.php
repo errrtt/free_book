@@ -42,6 +42,7 @@ Route::get('/books/category', [UserController::class, 'search_category']);
 
 Route::get('/users/show', [AdminController::class, 'show_user']);
 Route::get('/users/delete/{id}', [AdminController::class, 'delete']);
+Route::get('/users/suspended/{id}', [AdminController::class, 'suspend']);
 
 Auth::routes();
 

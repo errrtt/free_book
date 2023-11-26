@@ -29,9 +29,29 @@ class AdminController extends Controller
     public function delete($id)
     {
         $user = \App\Models\User::find($id);
-        if(Gate::allows('admin-authorized')) {
+        if(Gate::allows('user-delete', $user)) {
             $user->delete();
             return back()->with('info', 'One user deleted just now.');
+        }
+
+        return back()->with('info', 'unauthorized');
+    }
+
+    public function suspend($id)
+    {
+        $user = \App\Models\User::find($id);
+        if(Gate::allows('admin-suspend', $user)) {
+            if($user->suspended === 0) {
+                $user->suspended = 1;
+                $user->save();
+                return back()->with('info', "Suspended $user->name");
+            }else {
+                $user->suspended = 0;
+                $user->save();
+                return back()->with('info', "Unsuspended $user->name");
+            }
+
+
         }
 
         return back()->with('info', 'unauthorized');

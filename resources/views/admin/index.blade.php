@@ -20,8 +20,20 @@
                     <td>{{ $user->role->name }}</td>
                     <td>
                         <div class="text-center">
-                            <a href="{{ url("/users/delete/$user->id") }}" class="btn btn-outline-danger btn-sm">Delete</a>
-                            <a href="{{ url("/users/edit/$user->id") }}" class="btn btn-outline-warning btn-sm">Suspend</a>
+                            @auth
+
+                                @can('user-delete', $user)
+                                    <a href="{{ url("/users/delete/$user->id") }}" class="btn btn-outline-danger btn-sm">Delete</a>
+                                @endcan
+
+                                @can('admin-suspend', $user)
+                                     @if ($user->suspended === 0)
+                                        <a href="{{ url("/users/suspended/$user->id") }}" class="btn btn-outline-warning btn-sm">Suspend</a>
+                                    @else
+                                        <a href="{{ url("/users/suspended/$user->id") }}" class="btn btn-warning btn-sm">Suspend</a>
+                                    @endif
+                                @endcan
+                            @endauth
                         </div>
                     </td>
                 </tr>
